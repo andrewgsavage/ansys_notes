@@ -9,39 +9,39 @@ Convection
 
 https://www.mm.bme.hu/~gyebro/files/ans_help_v182/ans_elem/Hlp_E_SURF152.html
 
-+------------------------+-------------------------------+-----------------------------------------------+-------------------+
-| Output Quantity        | ETABLE and ESOL Command Input | Definition                                   | Unit              |
-+========================+===============================+===============================================+===================+
-| HGTOT                  | SMISC1                        | Heat generation rate over entire element      | W                 |
-| HFCTOT                 | SMISC2                        | Convection heat flow rate over element area   | W                 |
-| HRTOT                  | SMISC3                        | Radiation heat flow rate over entire element  | W                 |
-| AREA                   | NMISC1                        | Surface area                                 | m²                |
-| VNX                    | NMISC2                        | X component of unit normal vector             | -                 |
-| VNY                    | NMISC3                        | Y component of unit normal vector             | -                 |
-| VNZ                    | NMISC4                        | Z component of unit normal vector             | -                 |
-| HFILM                  | NMISC5                        | Film coefficient at each face node            | W/m²K             |
-| TAVG                   | NMISC6                        | Average surface temperature                   | K                 |
-| TBULK                  | NMISC7                        | Bulk temperature at each face node            | K                 |
-| TAW                    | NMISC8                        | Adiabatic wall temperature                    | K                 |
-| RELVEL                 | NMISC9                        | Relative velocity                             | m/s               |
-| SPHTFL                 | NMISC10                       | Specific heat of the fluid                    | J/kgK             |
-| RECFAC                 | NMISC11                       | Recovery factor                               | -                 |
-| EMISSUR                | NMISC12                       | Average emissivity of surface                 | -                 |
-| EMISEXT                | NMISC13                       | Emissivity of extra node                      | -                 |
-| TEMPSUR                | NMISC14                       | Average temperature of surface                | K                 |
-| TEMPEXT                | NMISC15                       | Temperature of extra node                     | K                 |
-| FORM FACTOR            | NMISC16                       | Average form factor of element                | -                 |
-| DENS                   | NMISC17                       | Density                                       | kg/m³             |
-| MASS                   | NMISC18                       | Mass of element                               | kg                |
-| EL                     |                               | Element Number                                | -                 |
-| SURFACE NODES          |                               | Nodes - I, J, K, L                            | -                 |
-| EXTRA NODE             |                               | Extra node (if present)                       | -                 |
-| MAT                    |                               | Material number                               | -                 |
-| VOLU                   |                               | Volume                                        | m³                |
-| XC, YC, ZC             |                               | Location where results are reported           | m                 |
-| CONV. HEAT RATE/AREA   | SMISC2 / NMISC1               | Average convection heat flow rate per unit area| W/m²              |
-| RAD. HEAT RATE/AREA    | SMISC3 / NMISC1               | Average radiation heat flow rate per unit area| W/m²              |
-+------------------------+-------------------------------+-----------------------------------------------+-------------------+
++------------------------+-------------------------------+---------------------------------------------------------------+-------------------+
+| Output Quantity        | ETABLE and ESOL Command Input | Definition                                                    | Unit              |
++========================+===============================+===============================================================+===================+
+| HGTOT                  | SMISC1                        | Heat generation rate over entire element                      | W                 |
+| HFCTOT                 | SMISC2                        | Convection heat flow rate over element area                   | W                 |
+| HRTOT                  | SMISC3                        | Radiation heat flow rate over entire element                  | W                 |
+| AREA                   | NMISC1                        | Surface area                                                  | m²                |
+| VNX                    | NMISC2                        | X component of unit normal vector                             | -                 |
+| VNY                    | NMISC3                        | Y component of unit normal vector                             | -                 |
+| VNZ                    | NMISC4                        | Z component of unit normal vector                             | -                 |
+| HFILM                  | NMISC5                        | Film coefficient at each face node                            | W/m²K             |
+| TAVG                   | NMISC6                        | Average surface temperature                                   | K                 |
+| TBULK                  | NMISC7                        | Bulk temperature at each face node                            | K                 |
+| TAW                    | NMISC8                        | Adiabatic wall temperature                                    | K                 |
+| RELVEL                 | NMISC9                        | Relative velocity                                             | m/s               |
+| SPHTFL                 | NMISC10                       | Specific heat of the fluid                                    | J/kgK             |
+| RECFAC                 | NMISC11                       | Recovery factor                                               | -                 |
+| EMISSUR                | NMISC12                       | Average emissivity of surface                                 | -                 |
+| EMISEXT                | NMISC13                       | Emissivity of extra node                                      | -                 |
+| TEMPSUR                | NMISC14                       | Average temperature of surface                                | K                 |
+| TEMPEXT                | NMISC15                       | Temperature of extra node                                     | K                 |
+| FORM FACTOR            | NMISC16                       | Average form factor of element                                | -                 |
+| DENS                   | NMISC17                       | Density                                                       | kg/m³             |
+| MASS                   | NMISC18                       | Mass of element                                               | kg                |
+| EL                     |                               | Element Number                                                | -                 |
+| SURFACE NODES          |                               | Nodes - I, J, K, L                                            | -                 |
+| EXTRA NODE             |                               | Extra node (if present)                                       | -                 |
+| MAT                    |                               | Material number                                               | -                 |
+| VOLU                   |                               | Volume                                                        | m³                |
+| XC, YC, ZC             |                               | Location where results are reported                           | m                 |
+| CONV. HEAT RATE/AREA   | SMISC2 / NMISC1               | Average convection heat flow rate per unit area               | W/m²              |
+| RAD. HEAT RATE/AREA    | SMISC3 / NMISC1               | Average radiation heat flow rate per unit area                | W/m²              |
++------------------------+-------------------------------+---------------------------------------------------------------+-------------------+
 
 
 

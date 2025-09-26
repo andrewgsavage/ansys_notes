@@ -35,24 +35,286 @@
 <span id="thermal"></span><h1>Thermal Analysis<a class="headerlink" href="#thermal-analysis" title="Link to this heading">¶</a></h1>
 <section id="convection">
 <h2>Convection<a class="headerlink" href="#convection" title="Link to this heading">¶</a></h2>
+<p><a class="reference external" href="https://www.mm.bme.hu/~gyebro/files/ans_help_v182/ans_elem/Hlp_E_SURF152.html">https://www.mm.bme.hu/~gyebro/files/ans_help_v182/ans_elem/Hlp_E_SURF152.html</a></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Output Quantity</p></th>
+<th class="head"><p>ETABLE and ESOL Command Input</p></th>
+<th class="head"><p>Definition</p></th>
+<th class="head"><p>Unit</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>HGTOT
+HFCTOT
+HRTOT
+AREA
+VNX
+VNY
+VNZ
+HFILM
+TAVG
+TBULK
+TAW
+RELVEL
+SPHTFL
+RECFAC
+EMISSUR
+EMISEXT
+TEMPSUR
+TEMPEXT
+FORM FACTOR
+DENS
+MASS
+EL
+SURFACE NODES
+EXTRA NODE
+MAT
+VOLU
+XC, YC, ZC
+CONV. HEAT RATE/AREA
+RAD. HEAT RATE/AREA</p></td>
+<td><p>SMISC1
+SMISC2
+SMISC3
+NMISC1
+NMISC2
+NMISC3
+NMISC4
+NMISC5
+NMISC6
+NMISC7
+NMISC8
+NMISC9
+NMISC10
+NMISC11
+NMISC12
+NMISC13
+NMISC14
+NMISC15
+NMISC16
+NMISC17
+NMISC18</p>
+<p>SMISC2 / NMISC1
+SMISC3 / NMISC1</p>
+</td>
+<td><p>Heat generation rate over entire element
+Convection heat flow rate over element area
+Radiation heat flow rate over entire element
+Surface area
+X component of unit normal vector
+Y component of unit normal vector
+Z component of unit normal vector
+Film coefficient at each face node
+Average surface temperature
+Bulk temperature at each face node
+Adiabatic wall temperature
+Relative velocity
+Specific heat of the fluid
+Recovery factor
+Average emissivity of surface
+Emissivity of extra node
+Average temperature of surface
+Temperature of extra node
+Average form factor of element
+Density
+Mass of element
+Element Number
+Nodes - I, J, K, L
+Extra node (if present)
+Material number
+Volume
+Location where results are reported
+Average convection heat flow rate per unit area
+Average radiation heat flow rate per unit area</p></td>
+<td><p>W
+W
+W
+m²
+-
+-
+-
+W/m²K
+K
+K
+K
+m/s
+J/kgK
+-
+-
+-
+K
+K
+-
+kg/m³
+kg
+-
+-
+-
+-
+m³
+m
+W/m²
+W/m²</p></td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">solution</span> <span class="o">=</span> <span class="n">ExtAPI</span><span class="o">.</span><span class="n">DataModel</span><span class="o">.</span><span class="n">AnalysisManager</span><span class="o">.</span><span class="n">Analyses</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">Solution</span>
 <span class="n">solution</span> <span class="o">=</span> <span class="n">ExtAPI</span><span class="o">.</span><span class="n">DataModel</span><span class="o">.</span><span class="n">Tree</span><span class="o">.</span><span class="n">FirstActiveObject</span>
 
 <span class="n">plots</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span>
-        <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Heat Transfer Coefficient [W/m²K]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Convection Heat Flow Rate [W]&quot;</span><span class="p">,</span>
         <span class="s2">&quot;ScopingMethod&quot;</span><span class="p">:</span> <span class="n">GeometryDefineByType</span><span class="o">.</span><span class="n">ResultFileItem</span><span class="p">,</span>
         <span class="s2">&quot;ItemType&quot;</span><span class="p">:</span> <span class="n">ResultFileItemType</span><span class="o">.</span><span class="n">ElementNameIDs</span><span class="p">,</span>
         <span class="s2">&quot;SolverComponentIDs&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;SURF152&#39;</span><span class="p">,</span>
-        <span class="s2">&quot;Expression&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;nmisc5&#39;</span><span class="p">,</span>
-
+        <span class="s2">&quot;Expression&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;smisc2&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Radiation Heat Flow Rate [W]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ScopingMethod&quot;</span><span class="p">:</span> <span class="n">GeometryDefineByType</span><span class="o">.</span><span class="n">ResultFileItem</span><span class="p">,</span>
+        <span class="s2">&quot;ItemType&quot;</span><span class="p">:</span> <span class="n">ResultFileItemType</span><span class="o">.</span><span class="n">ElementNameIDs</span><span class="p">,</span>
+        <span class="s2">&quot;SolverComponentIDs&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;SURF152&#39;</span><span class="p">,</span>
+        <span class="s2">&quot;Expression&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;smisc3&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Average Surface Temperature [K]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ScopingMethod&quot;</span><span class="p">:</span> <span class="n">GeometryDefineByType</span><span class="o">.</span><span class="n">ResultFileItem</span><span class="p">,</span>
+        <span class="s2">&quot;ItemType&quot;</span><span class="p">:</span> <span class="n">ResultFileItemType</span><span class="o">.</span><span class="n">ElementNameIDs</span><span class="p">,</span>
+        <span class="s2">&quot;SolverComponentIDs&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;SURF152&#39;</span><span class="p">,</span>
+        <span class="s2">&quot;Expression&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;nmisc6&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Bulk Temperature [K]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ScopingMethod&quot;</span><span class="p">:</span> <span class="n">GeometryDefineByType</span><span class="o">.</span><span class="n">ResultFileItem</span><span class="p">,</span>
+        <span class="s2">&quot;ItemType&quot;</span><span class="p">:</span> <span class="n">ResultFileItemType</span><span class="o">.</span><span class="n">ElementNameIDs</span><span class="p">,</span>
+        <span class="s2">&quot;SolverComponentIDs&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;SURF152&#39;</span><span class="p">,</span>
+        <span class="s2">&quot;Expression&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;nmisc7&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Adiabatic Wall Temperature [K]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ScopingMethod&quot;</span><span class="p">:</span> <span class="n">GeometryDefineByType</span><span class="o">.</span><span class="n">ResultFileItem</span><span class="p">,</span>
+        <span class="s2">&quot;ItemType&quot;</span><span class="p">:</span> <span class="n">ResultFileItemType</span><span class="o">.</span><span class="n">ElementNameIDs</span><span class="p">,</span>
+        <span class="s2">&quot;SolverComponentIDs&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;SURF152&#39;</span><span class="p">,</span>
+        <span class="s2">&quot;Expression&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;nmisc8&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Relative Velocity [m/s]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ScopingMethod&quot;</span><span class="p">:</span> <span class="n">GeometryDefineByType</span><span class="o">.</span><span class="n">ResultFileItem</span><span class="p">,</span>
+        <span class="s2">&quot;ItemType&quot;</span><span class="p">:</span> <span class="n">ResultFileItemType</span><span class="o">.</span><span class="n">ElementNameIDs</span><span class="p">,</span>
+        <span class="s2">&quot;SolverComponentIDs&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;SURF152&#39;</span><span class="p">,</span>
+        <span class="s2">&quot;Expression&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;nmisc9&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Specific Heat of Fluid [J/kgK]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ScopingMethod&quot;</span><span class="p">:</span> <span class="n">GeometryDefineByType</span><span class="o">.</span><span class="n">ResultFileItem</span><span class="p">,</span>
+        <span class="s2">&quot;ItemType&quot;</span><span class="p">:</span> <span class="n">ResultFileItemType</span><span class="o">.</span><span class="n">ElementNameIDs</span><span class="p">,</span>
+        <span class="s2">&quot;SolverComponentIDs&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;SURF152&#39;</span><span class="p">,</span>
+        <span class="s2">&quot;Expression&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;nmisc10&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Recovery Factor [-]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ScopingMethod&quot;</span><span class="p">:</span> <span class="n">GeometryDefineByType</span><span class="o">.</span><span class="n">ResultFileItem</span><span class="p">,</span>
+        <span class="s2">&quot;ItemType&quot;</span><span class="p">:</span> <span class="n">ResultFileItemType</span><span class="o">.</span><span class="n">ElementNameIDs</span><span class="p">,</span>
+        <span class="s2">&quot;SolverComponentIDs&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;SURF152&#39;</span><span class="p">,</span>
+        <span class="s2">&quot;Expression&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;nmisc11&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Average Emissivity of Surface [-]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ScopingMethod&quot;</span><span class="p">:</span> <span class="n">GeometryDefineByType</span><span class="o">.</span><span class="n">ResultFileItem</span><span class="p">,</span>
+        <span class="s2">&quot;ItemType&quot;</span><span class="p">:</span> <span class="n">ResultFileItemType</span><span class="o">.</span><span class="n">ElementNameIDs</span><span class="p">,</span>
+        <span class="s2">&quot;SolverComponentIDs&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;SURF152&#39;</span><span class="p">,</span>
+        <span class="s2">&quot;Expression&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;nmisc12&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Emissivity of Extra Node [-]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ScopingMethod&quot;</span><span class="p">:</span> <span class="n">GeometryDefineByType</span><span class="o">.</span><span class="n">ResultFileItem</span><span class="p">,</span>
+        <span class="s2">&quot;ItemType&quot;</span><span class="p">:</span> <span class="n">ResultFileItemType</span><span class="o">.</span><span class="n">ElementNameIDs</span><span class="p">,</span>
+        <span class="s2">&quot;SolverComponentIDs&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;SURF152&#39;</span><span class="p">,</span>
+        <span class="s2">&quot;Expression&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;nmisc13&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Average Temperature of Surface [K]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ScopingMethod&quot;</span><span class="p">:</span> <span class="n">GeometryDefineByType</span><span class="o">.</span><span class="n">ResultFileItem</span><span class="p">,</span>
+        <span class="s2">&quot;ItemType&quot;</span><span class="p">:</span> <span class="n">ResultFileItemType</span><span class="o">.</span><span class="n">ElementNameIDs</span><span class="p">,</span>
+        <span class="s2">&quot;SolverComponentIDs&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;SURF152&#39;</span><span class="p">,</span>
+        <span class="s2">&quot;Expression&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;nmisc14&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Temperature of Extra Node [K]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ScopingMethod&quot;</span><span class="p">:</span> <span class="n">GeometryDefineByType</span><span class="o">.</span><span class="n">ResultFileItem</span><span class="p">,</span>
+        <span class="s2">&quot;ItemType&quot;</span><span class="p">:</span> <span class="n">ResultFileItemType</span><span class="o">.</span><span class="n">ElementNameIDs</span><span class="p">,</span>
+        <span class="s2">&quot;SolverComponentIDs&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;SURF152&#39;</span><span class="p">,</span>
+        <span class="s2">&quot;Expression&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;nmisc15&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Average Form Factor of Element [-]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ScopingMethod&quot;</span><span class="p">:</span> <span class="n">GeometryDefineByType</span><span class="o">.</span><span class="n">ResultFileItem</span><span class="p">,</span>
+        <span class="s2">&quot;ItemType&quot;</span><span class="p">:</span> <span class="n">ResultFileItemType</span><span class="o">.</span><span class="n">ElementNameIDs</span><span class="p">,</span>
+        <span class="s2">&quot;SolverComponentIDs&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;SURF152&#39;</span><span class="p">,</span>
+        <span class="s2">&quot;Expression&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;nmisc16&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Density [kg/m³]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ScopingMethod&quot;</span><span class="p">:</span> <span class="n">GeometryDefineByType</span><span class="o">.</span><span class="n">ResultFileItem</span><span class="p">,</span>
+        <span class="s2">&quot;ItemType&quot;</span><span class="p">:</span> <span class="n">ResultFileItemType</span><span class="o">.</span><span class="n">ElementNameIDs</span><span class="p">,</span>
+        <span class="s2">&quot;SolverComponentIDs&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;SURF152&#39;</span><span class="p">,</span>
+        <span class="s2">&quot;Expression&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;nmisc17&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Mass of Element [kg]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ScopingMethod&quot;</span><span class="p">:</span> <span class="n">GeometryDefineByType</span><span class="o">.</span><span class="n">ResultFileItem</span><span class="p">,</span>
+        <span class="s2">&quot;ItemType&quot;</span><span class="p">:</span> <span class="n">ResultFileItemType</span><span class="o">.</span><span class="n">ElementNameIDs</span><span class="p">,</span>
+        <span class="s2">&quot;SolverComponentIDs&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;SURF152&#39;</span><span class="p">,</span>
+        <span class="s2">&quot;Expression&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;nmisc18&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Convection Heat Rate per Area [W/m²]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ScopingMethod&quot;</span><span class="p">:</span> <span class="n">GeometryDefineByType</span><span class="o">.</span><span class="n">ResultFileItem</span><span class="p">,</span>
+        <span class="s2">&quot;ItemType&quot;</span><span class="p">:</span> <span class="n">ResultFileItemType</span><span class="o">.</span><span class="n">ElementNameIDs</span><span class="p">,</span>
+        <span class="s2">&quot;SolverComponentIDs&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;SURF152&#39;</span><span class="p">,</span>
+        <span class="s2">&quot;Expression&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;smisc2/nmisc1&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Radiation Heat Rate per Area [W/m²]&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;ScopingMethod&quot;</span><span class="p">:</span> <span class="n">GeometryDefineByType</span><span class="o">.</span><span class="n">ResultFileItem</span><span class="p">,</span>
+        <span class="s2">&quot;ItemType&quot;</span><span class="p">:</span> <span class="n">ResultFileItemType</span><span class="o">.</span><span class="n">ElementNameIDs</span><span class="p">,</span>
+        <span class="s2">&quot;SolverComponentIDs&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;SURF152&#39;</span><span class="p">,</span>
+        <span class="s2">&quot;Expression&quot;</span><span class="p">:</span> <span class="sa">r</span><span class="s1">&#39;smisc3/nmisc1&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
 <span class="p">]</span>
 
-<span class="n">user_defined_result</span> <span class="o">=</span> <span class="n">solution</span><span class="o">.</span><span class="n">AddUserDefinedResult</span><span class="p">()</span>
+<span class="c1"># List of plot names to generate; comment out any you don&#39;t want</span>
+<span class="n">selected_plot_names</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Convection Heat Flow Rate [W]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Radiation Heat Flow Rate [W]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Average Surface Temperature [K]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Bulk Temperature [K]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Adiabatic Wall Temperature [K]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Relative Velocity [m/s]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Specific Heat of Fluid [J/kgK]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Recovery Factor [-]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Average Emissivity of Surface [-]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Emissivity of Extra Node [-]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Average Temperature of Surface [K]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Temperature of Extra Node [K]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Average Form Factor of Element [-]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Density [kg/m³]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Mass of Element [kg]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Convection Heat Rate per Area [W/m²]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Radiation Heat Rate per Area [W/m²]&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Heat Transfer Coefficient [W/m²K]&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
 <span class="k">for</span> <span class="n">plot</span> <span class="ow">in</span> <span class="n">plots</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">plot</span><span class="p">[</span><span class="s2">&quot;Name&quot;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">selected_plot_names</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="n">user_defined_result</span> <span class="o">=</span> <span class="n">solution</span><span class="o">.</span><span class="n">AddUserDefinedResult</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">plot</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="nb">setattr</span><span class="p">(</span><span class="n">user_defined_result</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
 
+<span class="c1"># Explicit example without loop</span>
+<span class="n">user_defined_result</span> <span class="o">=</span> <span class="n">solution</span><span class="o">.</span><span class="n">AddUserDefinedResult</span><span class="p">()</span>
 <span class="n">user_defined_result</span><span class="o">.</span><span class="n">ScopingMethod</span> <span class="o">=</span> <span class="n">GeometryDefineByType</span><span class="o">.</span><span class="n">ResultFileItem</span>
 <span class="n">user_defined_result</span><span class="o">.</span><span class="n">ItemType</span> <span class="o">=</span> <span class="n">ResultFileItemType</span><span class="o">.</span><span class="n">ElementNameIDs</span>
 <span class="n">user_defined_result</span><span class="o">.</span><span class="n">SolverComponentIDs</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;SURF152&#39;</span>
