@@ -47,8 +47,34 @@ RAD. HEAT RATE/AREA       SMISC3 / NMISC1                 Average radiation heat
 
 .. code-block:: python
 
-    solution = ExtAPI.DataModel.AnalysisManager.Analyses[0].Solution
-    solution = ExtAPI.DataModel.Tree.FirstActiveObject
+    solution_index = 0  # Index of the solution in the project
+
+    # List of plot names to generate; comment out any you don't want
+    selected_plot_names = [
+        "Convection Heat Flow Rate [W]",
+        "Radiation Heat Flow Rate [W]",
+        "Average Surface Temperature [K]",
+        "Bulk Temperature [K]",
+        "Adiabatic Wall Temperature [K]",
+        "Relative Velocity [m/s]",
+        "Specific Heat of Fluid [J/kgK]",
+        "Recovery Factor [-]",
+        "Average Emissivity of Surface [-]",
+        "Emissivity of Extra Node [-]",
+        "Average Temperature of Surface [K]",
+        "Temperature of Extra Node [K]",
+        "Average Form Factor of Element [-]",
+        "Density [kg/m³]",
+        "Mass of Element [kg]",
+        "Convection Heat Rate per Area [W/m²]",
+        "Radiation Heat Rate per Area [W/m²]",
+        "Heat Transfer Coefficient [W/m²K]",
+    ]
+
+    ##################################################
+
+    solution = ExtAPI.DataModel.AnalysisManager.Analyses[solution_index].Solution
+    # solution = ExtAPI.DataModel.Tree.FirstActiveObject
 
     plots = [
         {
@@ -172,28 +198,6 @@ RAD. HEAT RATE/AREA       SMISC3 / NMISC1                 Average radiation heat
         },
     ]
 
-    # List of plot names to generate; comment out any you don't want
-    selected_plot_names = [
-        "Convection Heat Flow Rate [W]",
-        "Radiation Heat Flow Rate [W]",
-        "Average Surface Temperature [K]",
-        "Bulk Temperature [K]",
-        "Adiabatic Wall Temperature [K]",
-        "Relative Velocity [m/s]",
-        "Specific Heat of Fluid [J/kgK]",
-        "Recovery Factor [-]",
-        "Average Emissivity of Surface [-]",
-        "Emissivity of Extra Node [-]",
-        "Average Temperature of Surface [K]",
-        "Temperature of Extra Node [K]",
-        "Average Form Factor of Element [-]",
-        "Density [kg/m³]",
-        "Mass of Element [kg]",
-        "Convection Heat Rate per Area [W/m²]",
-        "Radiation Heat Rate per Area [W/m²]",
-        "Heat Transfer Coefficient [W/m²K]",
-    ]
-
     with Transaction():
         for plot in plots:
             if plot["Name"] not in selected_plot_names:
@@ -201,7 +205,11 @@ RAD. HEAT RATE/AREA       SMISC3 / NMISC1                 Average radiation heat
             user_defined_result = solution.AddUserDefinedResult()
             for key, value in plot.items():
                 setattr(user_defined_result, key, value)
-    
+            # I don't know why this isn't set by the loop above
+            user_defined_result['SolverComponentIDs'] = plot['SolverComponentIDs']
+
+.. code-block:: python
+
     # Explicit example without loop
     user_defined_result = solution.AddUserDefinedResult()
     user_defined_result.ScopingMethod = GeometryDefineByType.ResultFileItem
