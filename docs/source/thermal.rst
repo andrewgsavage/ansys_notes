@@ -7,7 +7,9 @@ Convection
 ----------
 
 
-https://www.mm.bme.hu/~gyebro/files/ans_help_v182/ans_elem/Hlp_E_SURF152.html
+SURF 151
+^^^^^^^^
+https://www.mm.bme.hu/~gyebro/files/ans_help_v182/ans_elem/Hlp_E_SURF252.html
 
 =======================   =============================   ===========================================================   ==========
 Output Quantity           ETABLE and ESOL Command Input   Definition                                                    Unit
@@ -44,12 +46,37 @@ RAD. HEAT RATE/AREA       SMISC3 / NMISC1                 Average radiation heat
 =======================   =============================   ===========================================================   ==========
 
 
+SURF 252
+^^^^^^^^
+https://www.mm.bme.hu/~gyebro/files/ans_help_v182/ans_elem/Hlp_E_SURF252.html
 
+======================================= ============================= ========================================================= ==========
+Output Quantity                         ETABLE and ESOL Command Input  Definition                                               Unit
+======================================= ============================= ========================================================= ==========
+CENTROID X                              NMISC1                        X coordinate of element centroid                          m
+CENTROID Y                              NMISC2                        Y coordinate of element centroid                          m
+CENTROID Z                              NMISC3                        Z coordinate of element centroid                          m
+AREA                                    NMISC4                        Surface area                                              m²
+TEMP                                    NMISC5                        Temperature                                               K
+EMISSIVITY                              NMISC6                        Emissivity                                                -
+Net outgoing radiation per unit area    NMISC7                        Net outgoing radiation heat flux per unit area            W/m²
+Emitted radiation per unit area         NMISC8                        Emitted radiation heat flux per unit area                 W/m²
+Reflected radiation per unit area       NMISC9                        Reflected radiation heat flux per unit area               W/m²
+Incident radiation per unit area        NMISC10                       Incident radiant heat flux per unit area                  W/m²
+Net outgoing radiation                  NMISC7 * NMISC4               Net outgoing radiation heat flux × area                   W
+Emitted radiation                       NMISC8 * NMISC4               Emitted radiation heat flux × area                        W
+Reflected radiation                     NMISC9 * NMISC4               Reflected radiation heat flux × area                      W
+Incident radiation                      NMISC10 * NMISC4              Incident radiant heat flux × area                         W
+Enclosure No.                           NMISC18                       Enclosure number                                          -
+======================================= ============================= ========================================================= ==========
+ 
 .. code-block:: python
 
     analysis_index = 0  # First analysis in the project
     # List of plot names to generate; comment out any you don't want
     selected_plot_names = [
+
+        # SURF 151
         "Convection Heat Flow Rate [W]",
        # "Radiation Heat Flow Rate [W]",
        # "Average Surface Temperature [K]",
@@ -66,8 +93,20 @@ RAD. HEAT RATE/AREA       SMISC3 / NMISC1                 Average radiation heat
       #  "Density [kg/m³]",
       #  "Mass of Element [kg]",
         "Convection Heat Rate per Area [W/m²]",
-        "Radiation Heat Rate per Area [W/m²]",
+      #  "Radiation Heat Rate per Area [W/m²]",
         "Heat Transfer Coefficient [W/m²K]",
+
+        # SURF 252
+        "Emissivity [-]",
+        "Enclosure Number [-]",
+        "Net outgoing radiation heat flux [W/m²]",
+      #  "Emitted radiation heat flux [W/m²]",
+      #  "Reflected radiation heat flux [W/m²]",
+      #  "Incident radiant heat flux [W/m²]",
+      #  "Net outgoing radiation [W]",
+      #  "Emitted radiation [W]",
+      #  "Reflected radiation [W]",
+      #  "Incident radiant [W]",
     ]
 
     ##################################################
@@ -196,6 +235,79 @@ RAD. HEAT RATE/AREA       SMISC3 / NMISC1                 Average radiation heat
             "Expression": r'smisc3/nmisc1',
         },
     ]
+
+    plots.extend([
+        {
+            "Name": "Emissivity [-]",
+            "ScopingMethod": GeometryDefineByType.ResultFileItem,
+            "ItemType": ResultFileItemType.ElementNameIDs,
+            "SolverComponentIDs": 'SURF252',
+            "Expression": r'nmisc6',
+        },
+        {
+            "Name": "Enclosure Number [-]",
+            "ScopingMethod": GeometryDefineByType.ResultFileItem,
+            "ItemType": ResultFileItemType.ElementNameIDs,
+            "SolverComponentIDs": 'SURF252',
+            "Expression": r'nmisc18',
+        },
+        {
+            "Name": "Net outgoing radiation heat flux [W/m²]",
+            "ScopingMethod": GeometryDefineByType.ResultFileItem,
+            "ItemType": ResultFileItemType.ElementNameIDs,
+            "SolverComponentIDs": 'SURF252',
+            "Expression": r'nmisc7',
+        },
+        {
+            "Name": "Emitted radiation heat flux [W/m²]",
+            "ScopingMethod": GeometryDefineByType.ResultFileItem,
+            "ItemType": ResultFileItemType.ElementNameIDs,
+            "SolverComponentIDs": 'SURF252',
+            "Expression": r'nmisc8',
+        },
+        {
+            "Name": "Reflected radiation heat flux [W/m²]",
+            "ScopingMethod": GeometryDefineByType.ResultFileItem,
+            "ItemType": ResultFileItemType.ElementNameIDs,
+            "SolverComponentIDs": 'SURF252',
+            "Expression": r'nmisc9',
+        },
+        {
+            "Name": "Incident radiant heat flux [W/m²]",
+            "ScopingMethod": GeometryDefineByType.ResultFileItem,
+            "ItemType": ResultFileItemType.ElementNameIDs,
+            "SolverComponentIDs": 'SURF252',
+            "Expression": r'nmisc10',
+        },
+        {
+            "Name": "Net outgoing radiation [W]",
+            "ScopingMethod": GeometryDefineByType.ResultFileItem,
+            "ItemType": ResultFileItemType.ElementNameIDs,
+            "SolverComponentIDs": 'SURF252',
+            "Expression": r'nmisc7*nmisc4',
+        },
+        {
+            "Name": "Emitted radiation [W]",
+            "ScopingMethod": GeometryDefineByType.ResultFileItem,
+            "ItemType": ResultFileItemType.ElementNameIDs,
+            "SolverComponentIDs": 'SURF252',
+            "Expression": r'nmisc8*nmisc4',
+        },
+        {
+            "Name": "Reflected radiation [W]",
+            "ScopingMethod": GeometryDefineByType.ResultFileItem,
+            "ItemType": ResultFileItemType.ElementNameIDs,
+            "SolverComponentIDs": 'SURF252',
+            "Expression": r'nmisc9*nmisc4',
+        },
+        {
+            "Name": "Incident radiant [W]",
+            "ScopingMethod": GeometryDefineByType.ResultFileItem,
+            "ItemType": ResultFileItemType.ElementNameIDs,
+            "SolverComponentIDs": 'SURF252',
+            "Expression": r'nmisc10*nmisc4',
+        },
+    ])
 
     with Transaction():
         for plot in plots:
