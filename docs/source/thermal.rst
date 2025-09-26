@@ -47,25 +47,24 @@ RAD. HEAT RATE/AREA       SMISC3 / NMISC1                 Average radiation heat
 
 .. code-block:: python
 
-    solution_index = 0  # Index of the solution in the project
-
+    analysis_index = 0  # First analysis in the project
     # List of plot names to generate; comment out any you don't want
     selected_plot_names = [
         "Convection Heat Flow Rate [W]",
-        "Radiation Heat Flow Rate [W]",
-        "Average Surface Temperature [K]",
+       # "Radiation Heat Flow Rate [W]",
+       # "Average Surface Temperature [K]",
         "Bulk Temperature [K]",
-        "Adiabatic Wall Temperature [K]",
-        "Relative Velocity [m/s]",
-        "Specific Heat of Fluid [J/kgK]",
-        "Recovery Factor [-]",
-        "Average Emissivity of Surface [-]",
-        "Emissivity of Extra Node [-]",
-        "Average Temperature of Surface [K]",
-        "Temperature of Extra Node [K]",
-        "Average Form Factor of Element [-]",
-        "Density [kg/m³]",
-        "Mass of Element [kg]",
+      #  "Adiabatic Wall Temperature [K]",
+      #  "Relative Velocity [m/s]",
+      #  "Specific Heat of Fluid [J/kgK]",
+      #  "Recovery Factor [-]",
+      #  "Average Emissivity of Surface [-]",
+      #  "Emissivity of Extra Node [-]",
+      #  "Average Temperature of Surface [K]",
+      #  "Temperature of Extra Node [K]",
+      #  "Average Form Factor of Element [-]",
+      #  "Density [kg/m³]",
+      #  "Mass of Element [kg]",
         "Convection Heat Rate per Area [W/m²]",
         "Radiation Heat Rate per Area [W/m²]",
         "Heat Transfer Coefficient [W/m²K]",
@@ -73,8 +72,8 @@ RAD. HEAT RATE/AREA       SMISC3 / NMISC1                 Average radiation heat
 
     ##################################################
 
-    solution = ExtAPI.DataModel.AnalysisManager.Analyses[solution_index].Solution
     # solution = ExtAPI.DataModel.Tree.FirstActiveObject
+    solution = ExtAPI.DataModel.Project.Model.Analyses[analysis_index].Solution
 
     plots = [
         {
@@ -206,7 +205,7 @@ RAD. HEAT RATE/AREA       SMISC3 / NMISC1                 Average radiation heat
             for key, value in plot.items():
                 setattr(user_defined_result, key, value)
             # I don't know why this isn't set by the loop above
-            user_defined_result['SolverComponentIDs'] = plot['SolverComponentIDs']
+            user_defined_result.SolverComponentIDs = plot['SolverComponentIDs']
 
 .. code-block:: python
 
