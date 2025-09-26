@@ -45,117 +45,201 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>HGTOT
-HFCTOT
-HRTOT
-AREA
-VNX
-VNY
-VNZ
-HFILM
-TAVG
-TBULK
-TAW
-RELVEL
-SPHTFL
-RECFAC
-EMISSUR
-EMISEXT
-TEMPSUR
-TEMPEXT
-FORM FACTOR
-DENS
-MASS
-EL
-SURFACE NODES
-EXTRA NODE
-MAT
-VOLU
-XC, YC, ZC
-CONV. HEAT RATE/AREA
-RAD. HEAT RATE/AREA</p></td>
-<td><p>SMISC1
-SMISC2
-SMISC3
-NMISC1
-NMISC2
-NMISC3
-NMISC4
-NMISC5
-NMISC6
-NMISC7
-NMISC8
-NMISC9
-NMISC10
-NMISC11
-NMISC12
-NMISC13
-NMISC14
-NMISC15
-NMISC16
-NMISC17
-NMISC18</p>
-<p>SMISC2 / NMISC1
-SMISC3 / NMISC1</p>
+<tr class="row-even"><td><p>HGTOT</p></td>
+<td><p>SMISC1</p></td>
+<td><p>Heat generation rate over entire element</p></td>
+<td><p>W</p></td>
+</tr>
+<tr class="row-odd"><td><p>HFCTOT</p></td>
+<td><p>SMISC2</p></td>
+<td><p>Convection heat flow rate over element area</p></td>
+<td><p>W</p></td>
+</tr>
+<tr class="row-even"><td><p>HRTOT</p></td>
+<td><p>SMISC3</p></td>
+<td><p>Radiation heat flow rate over entire element</p></td>
+<td><p>W</p></td>
+</tr>
+<tr class="row-odd"><td><p>AREA</p></td>
+<td><p>NMISC1</p></td>
+<td><p>Surface area</p></td>
+<td><p>m²</p></td>
+</tr>
+<tr class="row-even"><td><p>VNX</p></td>
+<td><p>NMISC2</p></td>
+<td><p>X component of unit normal vector</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
 </td>
-<td><p>Heat generation rate over entire element
-Convection heat flow rate over element area
-Radiation heat flow rate over entire element
-Surface area
-X component of unit normal vector
-Y component of unit normal vector
-Z component of unit normal vector
-Film coefficient at each face node
-Average surface temperature
-Bulk temperature at each face node
-Adiabatic wall temperature
-Relative velocity
-Specific heat of the fluid
-Recovery factor
-Average emissivity of surface
-Emissivity of extra node
-Average temperature of surface
-Temperature of extra node
-Average form factor of element
-Density
-Mass of element
-Element Number
-Nodes - I, J, K, L
-Extra node (if present)
-Material number
-Volume
-Location where results are reported
-Average convection heat flow rate per unit area
-Average radiation heat flow rate per unit area</p></td>
-<td><p>W
-W
-W
-m²
--
--
--
-W/m²K
-K
-K
-K
-m/s
-J/kgK
--
--
--
-K
-K
--
-kg/m³
-kg
--
--
--
--
-m³
-m
-W/m²
-W/m²</p></td>
+</tr>
+<tr class="row-odd"><td><p>VNY</p></td>
+<td><p>NMISC3</p></td>
+<td><p>Y component of unit normal vector</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>VNZ</p></td>
+<td><p>NMISC4</p></td>
+<td><p>Z component of unit normal vector</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>HFILM</p></td>
+<td><p>NMISC5</p></td>
+<td><p>Film coefficient at each face node</p></td>
+<td><p>W/m²K</p></td>
+</tr>
+<tr class="row-even"><td><p>TAVG</p></td>
+<td><p>NMISC6</p></td>
+<td><p>Average surface temperature</p></td>
+<td><p>K</p></td>
+</tr>
+<tr class="row-odd"><td><p>TBULK</p></td>
+<td><p>NMISC7</p></td>
+<td><p>Bulk temperature at each face node</p></td>
+<td><p>K</p></td>
+</tr>
+<tr class="row-even"><td><p>TAW</p></td>
+<td><p>NMISC8</p></td>
+<td><p>Adiabatic wall temperature</p></td>
+<td><p>K</p></td>
+</tr>
+<tr class="row-odd"><td><p>RELVEL</p></td>
+<td><p>NMISC9</p></td>
+<td><p>Relative velocity</p></td>
+<td><p>m/s</p></td>
+</tr>
+<tr class="row-even"><td><p>SPHTFL</p></td>
+<td><p>NMISC10</p></td>
+<td><p>Specific heat of the fluid</p></td>
+<td><p>J/kgK</p></td>
+</tr>
+<tr class="row-odd"><td><p>RECFAC</p></td>
+<td><p>NMISC11</p></td>
+<td><p>Recovery factor</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>EMISSUR</p></td>
+<td><p>NMISC12</p></td>
+<td><p>Average emissivity of surface</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>EMISEXT</p></td>
+<td><p>NMISC13</p></td>
+<td><p>Emissivity of extra node</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>TEMPSUR</p></td>
+<td><p>NMISC14</p></td>
+<td><p>Average temperature of surface</p></td>
+<td><p>K</p></td>
+</tr>
+<tr class="row-odd"><td><p>TEMPEXT</p></td>
+<td><p>NMISC15</p></td>
+<td><p>Temperature of extra node</p></td>
+<td><p>K</p></td>
+</tr>
+<tr class="row-even"><td><p>FORM FACTOR</p></td>
+<td><p>NMISC16</p></td>
+<td><p>Average form factor of element</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>DENS</p></td>
+<td><p>NMISC17</p></td>
+<td><p>Density</p></td>
+<td><p>kg/m³</p></td>
+</tr>
+<tr class="row-even"><td><p>MASS</p></td>
+<td><p>NMISC18</p></td>
+<td><p>Mass of element</p></td>
+<td><p>kg</p></td>
+</tr>
+<tr class="row-odd"><td><p>EL</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Element Number</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>SURFACE NODES</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Nodes - I, J, K, L</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>EXTRA NODE</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Extra node (if present)</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>MAT</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Material number</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td><p>VOLU</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Volume</p></td>
+<td><p>m³</p></td>
+</tr>
+<tr class="row-even"><td><p>XC, YC, ZC</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>Location where results are reported</p></td>
+<td><p>m</p></td>
+</tr>
+<tr class="row-odd"><td><p>CONV. HEAT RATE/AREA</p></td>
+<td><p>SMISC2 / NMISC1</p></td>
+<td><p>Average convection heat flow rate per unit area</p></td>
+<td><p>W/m²</p></td>
+</tr>
+<tr class="row-even"><td><p>RAD. HEAT RATE/AREA</p></td>
+<td><p>SMISC3 / NMISC1</p></td>
+<td><p>Average radiation heat flow rate per unit area</p></td>
+<td><p>W/m²</p></td>
 </tr>
 </tbody>
 </table>
