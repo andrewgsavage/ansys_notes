@@ -10,3 +10,7 @@ build = {cmd = "sphinx-build -M html source build", cwd ="docs"}
 
 [dependencies]
 sphinx = ">=8.2.3,<9"
+sphinx-toolbox = ">=4.0.0,<5"
+setuptools = ">=80.9.0,<81"
+sphinx-book-theme = ">=1.1.4,<2"
+sphinx-copybutton = ">=0.5.2,<0.6"
