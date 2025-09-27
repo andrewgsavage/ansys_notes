@@ -10,3 +10,4 @@ This section contains notes on post-processing results.
     :maxdepth: 1
 
     thermal
+    colormaps
