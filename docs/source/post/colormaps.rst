@@ -28,7 +28,7 @@ https://matplotlib.org/stable/users/explain/colors/colormaps.html
 .. code-block:: python
    :caption: Set max and min
 
-    high_value = Quantity(1e6, "")
+    high_value = Quantity(1e6, "Pa")
     low_value = -1 * high_value
 
     lgd = Ansys.Mechanical.Graphics.Tools.CurrentLegendSettings()
