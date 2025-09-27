@@ -16,3 +16,4 @@ documentation for details.
     :hidden:
 
     Post-processing <post/index>
+    Pre-processing <pre/index>
