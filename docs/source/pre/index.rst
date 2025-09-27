@@ -9,4 +9,4 @@ This section contains notes on pre-processing results.
 .. toctree::
     :maxdepth: 1
 
-    apdl
+    Open APDL <apdl>
