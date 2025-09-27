@@ -1,7 +1,7 @@
-Post Processing
+Post-Processing
 ===============
 
-This section contains notes on post processing results.
+This section contains notes on post-processing results.
 
 
 
