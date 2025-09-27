@@ -1,7 +1,7 @@
-Post Processing
+Pre-Processing
 ===============
 
-This section contains notes on post processing results.
+This section contains notes on pre-processing results.
 
 
 
@@ -9,4 +9,4 @@ This section contains notes on post processing results.
 .. toctree::
     :maxdepth: 1
 
-    thermal
+    apdl

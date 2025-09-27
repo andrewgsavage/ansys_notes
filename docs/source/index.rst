@@ -15,5 +15,5 @@ documentation for details.
     :maxdepth: 1
     :hidden:
 
-    Post-processing <post/index>
     Pre-processing <pre/index>
+    Post-processing <post/index>
