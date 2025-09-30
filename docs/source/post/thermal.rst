@@ -133,6 +133,13 @@ SURF252_ is the default ETYPE for surface to surface radiation.
             "Expression": r'smisc3',
         },
         {
+            "Name": Heat Transfer Coefficient [W/m²K]",
+            "ScopingMethod": GeometryDefineByType.ResultFileItem,
+            "ItemType": ResultFileItemType.ElementNameIDs,
+            "SolverComponentIDs": 'SURF152',
+            "Expression": r'nmisc5',
+        },
+        {
             "Name": "Average Surface Temperature [K]",
             "ScopingMethod": GeometryDefineByType.ResultFileItem,
             "ItemType": ResultFileItemType.ElementNameIDs,
